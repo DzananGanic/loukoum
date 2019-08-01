@@ -36,3 +36,35 @@ func (Exists) selectExpression() {}
 
 // Ensure that Exists is an Expression
 var _ Expression = Exists{}
+
+// NotExists is a subquery expression.
+type NotExists struct {
+	Subquery Expression
+}
+
+// NewNotExists returns a new NotExists instance.
+func NewNotExists(value interface{}) NotExists {
+	return NotExists{
+		Subquery: NewExpression(value),
+	}
+}
+
+func (NotExists) expression() {}
+
+// Write exposes statement as a SQL query.
+func (nexists NotExists) Write(ctx types.Context) {
+	ctx.Write("NOT " + token.Exists.String())
+	ctx.Write(" (")
+	nexists.Subquery.Write(ctx)
+	ctx.Write(")")
+}
+
+// IsEmpty returns true if statement is undefined.
+func (nexists NotExists) IsEmpty() bool {
+	return false
+}
+
+func (NotExists) selectExpression() {}
+
+// Ensure that NotExists is an Expression
+var _ Expression = NotExists{}
