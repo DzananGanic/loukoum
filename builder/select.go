@@ -3,9 +3,9 @@ package builder
 import (
 	"fmt"
 
-	"github.com/ulule/loukoum/parser"
-	"github.com/ulule/loukoum/stmt"
-	"github.com/ulule/loukoum/types"
+	"github.com/DzananGanic/loukoum/parser"
+	"github.com/DzananGanic/loukoum/stmt"
+	"github.com/DzananGanic/loukoum/types"
 )
 
 // Select is a builder used for "SELECT" query.

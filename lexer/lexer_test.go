@@ -7,8 +7,8 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/ulule/loukoum/lexer"
-	"github.com/ulule/loukoum/token"
+	"github.com/DzananGanic/loukoum/lexer"
+	"github.com/DzananGanic/loukoum/token"
 )
 
 type LexScenario struct {

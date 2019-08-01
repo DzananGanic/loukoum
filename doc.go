@@ -10,7 +10,7 @@
 // conditions, loukoum is here to protect you against yourself.
 //
 // For further informations, you can read this documentation:
-// https://github.com/ulule/loukoum/blob/master/README.md
+// https://github.com/DzananGanic/loukoum/blob/master/README.md
 //
 // Or you can discover loukoum with these examples.
 // An "insert" can be generated like that:

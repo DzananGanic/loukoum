@@ -1,8 +1,8 @@
 package stmt
 
 import (
-	"github.com/ulule/loukoum/token"
-	"github.com/ulule/loukoum/types"
+	"github.com/DzananGanic/loukoum/token"
+	"github.com/DzananGanic/loukoum/types"
 )
 
 // SelectExpression is a SQL expression for a SELECT statement.

@@ -3,8 +3,8 @@ package stmt
 import (
 	"sort"
 
-	"github.com/ulule/loukoum/token"
-	"github.com/ulule/loukoum/types"
+	"github.com/DzananGanic/loukoum/token"
+	"github.com/DzananGanic/loukoum/types"
 )
 
 // Set is a SET clause.

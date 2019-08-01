@@ -29,13 +29,13 @@ Just a few examples when and where loukoum can become handy:
 Using [dep](https://github.com/golang/dep)
 
 ```console
-dep ensure -add github.com/ulule/loukoum@master
+dep ensure -add github.com/DzananGanic/loukoum@master
 ```
 
 or `go get`
 
 ```console
-go get -u github.com/ulule/loukoum
+go get -u github.com/DzananGanic/loukoum
 ```
 
 ## Usage
@@ -50,7 +50,7 @@ to execute queries.
 Insert a new `Comment` and retrieve its `id`.
 
 ```go
-import lk "github.com/ulule/loukoum"
+import lk "github.com/DzananGanic/loukoum"
 
 // Comment model
 type Comment struct {
@@ -102,7 +102,7 @@ func CreateComment(db *sqlx.DB, comment Comment) (Comment, error) {
 ### INSERT on conflict (UPSERT)
 
 ```go
-import lk "github.com/ulule/loukoum"
+import lk "github.com/DzananGanic/loukoum"
 
 // UpsertComment inserts or updates a comment based on the email attribute.
 func UpsertComment(db *sqlx.DB, comment Comment) (Comment, error) {
@@ -207,7 +207,7 @@ func PublishNews(db *sqlx.DB, news News) (News, error) {
 Retrieve non-deleted users.
 
 ```go
-import lk "github.com/ulule/loukoum"
+import lk "github.com/DzananGanic/loukoum"
 
 // User model
 type User struct {
@@ -391,7 +391,7 @@ See [examples](examples/named) directory for more information.
 
 ### Migrating from v1.x.x
 
- * Change `Prepare()` to `NamedQuery()` for [builder.Builder](https://github.com/ulule/loukoum/blob/d6ee7eac818ec74889870fa82dff411ea266463b/builder/builder.go#L19) interface.
+ * Change `Prepare()` to `NamedQuery()` for [builder.Builder](https://github.com/DzananGanic/loukoum/blob/d6ee7eac818ec74889870fa82dff411ea266463b/builder/builder.go#L19) interface.
 
 ## Inspiration
 
@@ -415,19 +415,19 @@ Loukoum artworks are released under the [`Creative Commons BY-SA License`][artwo
   * [@novln_](https://twitter.com/novln_)
   * [@oibafsellig](https://twitter.com/oibafsellig)
   * [@thoas](https://twitter.com/thoas)
-* Fork the [project](https://github.com/ulule/loukoum)
-* Fix [bugs](https://github.com/ulule/loukoum/issues)
+* Fork the [project](https://github.com/DzananGanic/loukoum)
+* Fix [bugs](https://github.com/DzananGanic/loukoum/issues)
 
 **Don't hesitate ;)**
 
-[loukoum-url]: https://github.com/ulule/loukoum
+[loukoum-url]: https://github.com/DzananGanic/loukoum
 [loukoum-img]: docs/images/banner.png
-[godoc-url]: https://godoc.org/github.com/ulule/loukoum
-[godoc-img]: https://godoc.org/github.com/ulule/loukoum?status.svg
+[godoc-url]: https://godoc.org/github.com/DzananGanic/loukoum
+[godoc-img]: https://godoc.org/github.com/DzananGanic/loukoum?status.svg
 [license-img]: https://img.shields.io/badge/license-MIT-blue.svg
 [software-license-url]: LICENSE
 [artwork-license-url]: docs/images/LICENSE
 [sql-url]: https://golang.org/pkg/database/sql/
 [sqlx-url]: https://github.com/jmoiron/sqlx
-[circle-url]: https://circleci.com/gh/ulule/loukoum/tree/master
-[circle-img]: https://circleci.com/gh/ulule/loukoum.svg?style=shield&circle-token=1de7bc4fd603b0df406ceef4bbba3fb3d6b5ed10
+[circle-url]: https://circleci.com/gh/DzananGanic/loukoum/tree/master
+[circle-img]: https://circleci.com/gh/DzananGanic/loukoum.svg?style=shield&circle-token=1de7bc4fd603b0df406ceef4bbba3fb3d6b5ed10

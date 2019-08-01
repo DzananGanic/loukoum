@@ -1,4 +1,4 @@
-# Gopkg.toml for github.com/ulule/loukoum
+# Gopkg.toml for github.com/DzananGanic/loukoum
 
 ignored = [
   "github.com/stretchr/testify/require",

@@ -6,8 +6,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/ulule/loukoum/stmt"
-	"github.com/ulule/loukoum/types"
+	"github.com/DzananGanic/loukoum/stmt"
+	"github.com/DzananGanic/loukoum/types"
 )
 
 // Builder defines a generic methods available for Select, Insert, Update and Delete builders.

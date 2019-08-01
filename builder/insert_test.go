@@ -8,8 +8,8 @@ import (
 
 	"github.com/lib/pq"
 
-	"github.com/ulule/loukoum"
-	"github.com/ulule/loukoum/builder"
+	"github.com/DzananGanic/loukoum"
+	"github.com/DzananGanic/loukoum/builder"
 )
 
 func TestInsert_Columns(t *testing.T) {
@@ -56,15 +56,15 @@ func TestInsert_Values(t *testing.T) {
 			Builders: []builder.Builder{
 				loukoum.Insert("table").
 					Columns("email", "enabled", "created_at").
-					Values("tech@ulule.com", true, loukoum.Raw("NOW()")),
+					Values("tech@DzananGanic.com", true, loukoum.Raw("NOW()")),
 				loukoum.Insert("table").
 					Columns("email", "enabled", "created_at").
-					Values([]interface{}{"tech@ulule.com", true, loukoum.Raw("NOW()")}),
+					Values([]interface{}{"tech@DzananGanic.com", true, loukoum.Raw("NOW()")}),
 			},
-			String:     "INSERT INTO table (email, enabled, created_at) VALUES ('tech@ulule.com', true, NOW())",
+			String:     "INSERT INTO table (email, enabled, created_at) VALUES ('tech@DzananGanic.com', true, NOW())",
 			Query:      "INSERT INTO table (email, enabled, created_at) VALUES ($1, $2, NOW())",
 			NamedQuery: "INSERT INTO table (email, enabled, created_at) VALUES (:arg_1, :arg_2, NOW())",
-			Args:       []interface{}{"tech@ulule.com", true},
+			Args:       []interface{}{"tech@DzananGanic.com", true},
 		},
 		{
 			Name: "With byte slice",
@@ -93,10 +93,10 @@ func TestInsert_OnConflict(t *testing.T) {
 			Builder: loukoum.
 				Insert("table").
 				Columns("email", "enabled", "created_at").
-				Values("tech@ulule.com", true, loukoum.Raw("NOW()")).
+				Values("tech@DzananGanic.com", true, loukoum.Raw("NOW()")).
 				OnConflict(loukoum.DoNothing()),
 			String: fmt.Sprint(
-				"INSERT INTO table (email, enabled, created_at) VALUES ('tech@ulule.com', true, NOW()) ",
+				"INSERT INTO table (email, enabled, created_at) VALUES ('tech@DzananGanic.com', true, NOW()) ",
 				"ON CONFLICT DO NOTHING",
 			),
 			Query: fmt.Sprint(
@@ -107,7 +107,7 @@ func TestInsert_OnConflict(t *testing.T) {
 				"INSERT INTO table (email, enabled, created_at) VALUES (:arg_1, :arg_2, NOW()) ",
 				"ON CONFLICT DO NOTHING",
 			),
-			Args: []interface{}{"tech@ulule.com", true},
+			Args: []interface{}{"tech@DzananGanic.com", true},
 		},
 		{
 			Name: "Do nothing",
@@ -115,16 +115,16 @@ func TestInsert_OnConflict(t *testing.T) {
 				loukoum.
 					Insert("table").
 					Columns("email", "enabled", "created_at").
-					Values("tech@ulule.com", true, loukoum.Raw("NOW()")).
+					Values("tech@DzananGanic.com", true, loukoum.Raw("NOW()")).
 					OnConflict("email", loukoum.DoNothing()),
 				loukoum.
 					Insert("table").
 					Columns("email", "enabled", "created_at").
-					Values("tech@ulule.com", true, loukoum.Raw("NOW()")).
+					Values("tech@DzananGanic.com", true, loukoum.Raw("NOW()")).
 					OnConflict(loukoum.Column("email"), loukoum.DoNothing()),
 			},
 			String: fmt.Sprint(
-				"INSERT INTO table (email, enabled, created_at) VALUES ('tech@ulule.com', true, NOW()) ",
+				"INSERT INTO table (email, enabled, created_at) VALUES ('tech@DzananGanic.com', true, NOW()) ",
 				"ON CONFLICT (email) DO NOTHING",
 			),
 			Query: fmt.Sprint(
@@ -135,17 +135,17 @@ func TestInsert_OnConflict(t *testing.T) {
 				"INSERT INTO table (email, enabled, created_at) VALUES (:arg_1, :arg_2, NOW()) ",
 				"ON CONFLICT (email) DO NOTHING",
 			),
-			Args: []interface{}{"tech@ulule.com", true},
+			Args: []interface{}{"tech@DzananGanic.com", true},
 		},
 		{
 			Name: "Do nothing with multiple targets",
 			Builder: loukoum.
 				Insert("table").
 				Columns("email", "enabled", "created_at").
-				Values("tech@ulule.com", true, loukoum.Raw("NOW()")).
+				Values("tech@DzananGanic.com", true, loukoum.Raw("NOW()")).
 				OnConflict("email", loukoum.Column("uuid"), "reference", loukoum.DoNothing()),
 			String: fmt.Sprint(
-				"INSERT INTO table (email, enabled, created_at) VALUES ('tech@ulule.com', true, NOW()) ",
+				"INSERT INTO table (email, enabled, created_at) VALUES ('tech@DzananGanic.com', true, NOW()) ",
 				"ON CONFLICT (email, uuid, reference) DO NOTHING",
 			),
 			Query: fmt.Sprint(
@@ -156,7 +156,7 @@ func TestInsert_OnConflict(t *testing.T) {
 				"INSERT INTO table (email, enabled, created_at) VALUES (:arg_1, :arg_2, NOW()) ",
 				"ON CONFLICT (email, uuid, reference) DO NOTHING",
 			),
-			Args: []interface{}{"tech@ulule.com", true},
+			Args: []interface{}{"tech@DzananGanic.com", true},
 		},
 		{
 			Name: "Do update",
@@ -164,7 +164,7 @@ func TestInsert_OnConflict(t *testing.T) {
 				loukoum.
 					Insert("table").
 					Columns("email", "enabled", "created_at").
-					Values("tech@ulule.com", true, loukoum.Raw("NOW()")).
+					Values("tech@DzananGanic.com", true, loukoum.Raw("NOW()")).
 					OnConflict("email", loukoum.DoUpdate(
 						loukoum.Pair("created_at", loukoum.Raw("NOW()")),
 						loukoum.Pair("enabled", true),
@@ -172,14 +172,14 @@ func TestInsert_OnConflict(t *testing.T) {
 				loukoum.
 					Insert("table").
 					Columns("email", "enabled", "created_at").
-					Values("tech@ulule.com", true, loukoum.Raw("NOW()")).
+					Values("tech@DzananGanic.com", true, loukoum.Raw("NOW()")).
 					OnConflict(loukoum.Column("email"), loukoum.DoUpdate(
 						loukoum.Pair("created_at", loukoum.Raw("NOW()")),
 						loukoum.Pair("enabled", true),
 					)),
 			},
 			String: fmt.Sprint(
-				"INSERT INTO table (email, enabled, created_at) VALUES ('tech@ulule.com', true, NOW()) ",
+				"INSERT INTO table (email, enabled, created_at) VALUES ('tech@DzananGanic.com', true, NOW()) ",
 				"ON CONFLICT (email) DO UPDATE SET created_at = NOW(), enabled = true",
 			),
 			Query: fmt.Sprint(
@@ -190,20 +190,20 @@ func TestInsert_OnConflict(t *testing.T) {
 				"INSERT INTO table (email, enabled, created_at) VALUES (:arg_1, :arg_2, NOW()) ",
 				"ON CONFLICT (email) DO UPDATE SET created_at = NOW(), enabled = :arg_3",
 			),
-			Args: []interface{}{"tech@ulule.com", true, true},
+			Args: []interface{}{"tech@DzananGanic.com", true, true},
 		},
 		{
 			Name: "Do update with two targets",
 			Builder: loukoum.
 				Insert("table").
 				Columns("email", "enabled", "created_at").
-				Values("tech@ulule.com", true, loukoum.Raw("NOW()")).
+				Values("tech@DzananGanic.com", true, loukoum.Raw("NOW()")).
 				OnConflict("email", "uuid", loukoum.DoUpdate(
 					loukoum.Pair("created_at", loukoum.Raw("NOW()")),
 					loukoum.Pair("enabled", true),
 				)),
 			String: fmt.Sprint(
-				"INSERT INTO table (email, enabled, created_at) VALUES ('tech@ulule.com', true, NOW()) ",
+				"INSERT INTO table (email, enabled, created_at) VALUES ('tech@DzananGanic.com', true, NOW()) ",
 				"ON CONFLICT (email, uuid) DO UPDATE SET created_at = NOW(), enabled = true",
 			),
 			Query: fmt.Sprint(
@@ -214,20 +214,20 @@ func TestInsert_OnConflict(t *testing.T) {
 				"INSERT INTO table (email, enabled, created_at) VALUES (:arg_1, :arg_2, NOW()) ",
 				"ON CONFLICT (email, uuid) DO UPDATE SET created_at = NOW(), enabled = :arg_3",
 			),
-			Args: []interface{}{"tech@ulule.com", true, true},
+			Args: []interface{}{"tech@DzananGanic.com", true, true},
 		},
 		{
 			Name: "Do update with 3 targets",
 			Builder: loukoum.
 				Insert("table").
 				Columns("email", "enabled", "created_at").
-				Values("tech@ulule.com", true, loukoum.Raw("NOW()")).
+				Values("tech@DzananGanic.com", true, loukoum.Raw("NOW()")).
 				OnConflict("email", loukoum.Column("uuid"), "reference", loukoum.DoUpdate(
 					loukoum.Pair("created_at", loukoum.Raw("NOW()")),
 					loukoum.Pair("enabled", true),
 				)),
 			String: fmt.Sprint(
-				"INSERT INTO table (email, enabled, created_at) VALUES ('tech@ulule.com', true, NOW()) ",
+				"INSERT INTO table (email, enabled, created_at) VALUES ('tech@DzananGanic.com', true, NOW()) ",
 				"ON CONFLICT (email, uuid, reference) DO UPDATE SET created_at = NOW(), enabled = true",
 			),
 			Query: fmt.Sprint(
@@ -238,7 +238,7 @@ func TestInsert_OnConflict(t *testing.T) {
 				"INSERT INTO table (email, enabled, created_at) VALUES (:arg_1, :arg_2, NOW()) ",
 				"ON CONFLICT (email, uuid, reference) DO UPDATE SET created_at = NOW(), enabled = :arg_3",
 			),
-			Args: []interface{}{"tech@ulule.com", true, true},
+			Args: []interface{}{"tech@DzananGanic.com", true, true},
 		},
 		{
 			Name: "Corner case 0",
@@ -246,7 +246,7 @@ func TestInsert_OnConflict(t *testing.T) {
 				return loukoum.
 					Insert("table").
 					Columns("email", "enabled", "created_at").
-					Values("tech@ulule.com", true, loukoum.Raw("NOW()")).
+					Values("tech@DzananGanic.com", true, loukoum.Raw("NOW()")).
 					OnConflict()
 			},
 		},
@@ -256,7 +256,7 @@ func TestInsert_OnConflict(t *testing.T) {
 				return loukoum.
 					Insert("table").
 					Columns("email", "enabled", "created_at").
-					Values("tech@ulule.com", true, loukoum.Raw("NOW()")).
+					Values("tech@DzananGanic.com", true, loukoum.Raw("NOW()")).
 					OnConflict("email")
 			},
 		},
@@ -266,7 +266,7 @@ func TestInsert_OnConflict(t *testing.T) {
 				return loukoum.
 					Insert("table").
 					Columns("email", "enabled", "created_at").
-					Values("tech@ulule.com", true, loukoum.Raw("NOW()")).
+					Values("tech@DzananGanic.com", true, loukoum.Raw("NOW()")).
 					OnConflict(loukoum.DoUpdate(
 						loukoum.Pair("created_at", loukoum.Raw("NOW()")),
 						loukoum.Pair("enabled", true),
@@ -279,7 +279,7 @@ func TestInsert_OnConflict(t *testing.T) {
 				return loukoum.
 					Insert("table").
 					Columns("email", "enabled", "created_at").
-					Values("tech@ulule.com", true, loukoum.Raw("NOW()")).
+					Values("tech@DzananGanic.com", true, loukoum.Raw("NOW()")).
 					OnConflict("email", 6700)
 			},
 		},
@@ -289,7 +289,7 @@ func TestInsert_OnConflict(t *testing.T) {
 				return loukoum.
 					Insert("table").
 					Columns("email", "enabled", "created_at").
-					Values("tech@ulule.com", true, loukoum.Raw("NOW()")).
+					Values("tech@DzananGanic.com", true, loukoum.Raw("NOW()")).
 					OnConflict(569)
 			},
 		},
@@ -299,7 +299,7 @@ func TestInsert_OnConflict(t *testing.T) {
 				return loukoum.
 					Insert("table").
 					Columns("email", "enabled", "created_at").
-					Values("tech@ulule.com", true, loukoum.Raw("NOW()")).
+					Values("tech@DzananGanic.com", true, loukoum.Raw("NOW()")).
 					OnConflict("email", "uuid")
 			},
 		},
@@ -309,7 +309,7 @@ func TestInsert_OnConflict(t *testing.T) {
 				return loukoum.
 					Insert("table").
 					Columns("email", "enabled", "created_at").
-					Values("tech@ulule.com", true, loukoum.Raw("NOW()")).
+					Values("tech@DzananGanic.com", true, loukoum.Raw("NOW()")).
 					OnConflict(loukoum.Column("email"), loukoum.Column("uuid"), loukoum.Column("reference"))
 			},
 		},
@@ -428,72 +428,72 @@ func TestInsert_Valuer(t *testing.T) {
 			Builder: loukoum.
 				Insert("table").
 				Columns("email", "enabled", "created_at").
-				Values("tech@ulule.com", true, pq.NullTime{Time: when, Valid: true}),
+				Values("tech@DzananGanic.com", true, pq.NullTime{Time: when, Valid: true}),
 			String: fmt.Sprint(
-				"INSERT INTO table (email, enabled, created_at) VALUES ('tech@ulule.com', ",
+				"INSERT INTO table (email, enabled, created_at) VALUES ('tech@DzananGanic.com', ",
 				"true, '2017-11-23 16:47:27+00')",
 			),
 			Query:      "INSERT INTO table (email, enabled, created_at) VALUES ($1, $2, $3)",
 			NamedQuery: "INSERT INTO table (email, enabled, created_at) VALUES (:arg_1, :arg_2, :arg_3)",
-			Args:       []interface{}{"tech@ulule.com", true, pq.NullTime{Time: when, Valid: true}},
+			Args:       []interface{}{"tech@DzananGanic.com", true, pq.NullTime{Time: when, Valid: true}},
 		},
 		{
 			Name: "pq.NullTime null",
 			Builder: loukoum.
 				Insert("table").
 				Columns("email", "enabled", "created_at").
-				Values("tech@ulule.com", true, pq.NullTime{}),
+				Values("tech@DzananGanic.com", true, pq.NullTime{}),
 			String: fmt.Sprint(
-				"INSERT INTO table (email, enabled, created_at) VALUES ('tech@ulule.com', ",
+				"INSERT INTO table (email, enabled, created_at) VALUES ('tech@DzananGanic.com', ",
 				"true, NULL)",
 			),
 			Query:      "INSERT INTO table (email, enabled, created_at) VALUES ($1, $2, $3)",
 			NamedQuery: "INSERT INTO table (email, enabled, created_at) VALUES (:arg_1, :arg_2, :arg_3)",
-			Args:       []interface{}{"tech@ulule.com", true, pq.NullTime{}},
+			Args:       []interface{}{"tech@DzananGanic.com", true, pq.NullTime{}},
 		},
 		{
 			Name: "sql.NullString not null",
 			Builder: loukoum.
 				Insert("table").
 				Columns("email", "comment").
-				Values("tech@ulule.com", sql.NullString{String: "foobar", Valid: true}),
-			String:     "INSERT INTO table (email, comment) VALUES ('tech@ulule.com', 'foobar')",
+				Values("tech@DzananGanic.com", sql.NullString{String: "foobar", Valid: true}),
+			String:     "INSERT INTO table (email, comment) VALUES ('tech@DzananGanic.com', 'foobar')",
 			Query:      "INSERT INTO table (email, comment) VALUES ($1, $2)",
 			NamedQuery: "INSERT INTO table (email, comment) VALUES (:arg_1, :arg_2)",
-			Args:       []interface{}{"tech@ulule.com", sql.NullString{String: "foobar", Valid: true}},
+			Args:       []interface{}{"tech@DzananGanic.com", sql.NullString{String: "foobar", Valid: true}},
 		},
 		{
 			Name: "sql.NullString null",
 			Builder: loukoum.
 				Insert("table").
 				Columns("email", "comment").
-				Values("tech@ulule.com", sql.NullString{}),
-			String:     "INSERT INTO table (email, comment) VALUES ('tech@ulule.com', NULL)",
+				Values("tech@DzananGanic.com", sql.NullString{}),
+			String:     "INSERT INTO table (email, comment) VALUES ('tech@DzananGanic.com', NULL)",
 			Query:      "INSERT INTO table (email, comment) VALUES ($1, $2)",
 			NamedQuery: "INSERT INTO table (email, comment) VALUES (:arg_1, :arg_2)",
-			Args:       []interface{}{"tech@ulule.com", sql.NullString{}},
+			Args:       []interface{}{"tech@DzananGanic.com", sql.NullString{}},
 		},
 		{
 			Name: "sql.NullInt64 not null",
 			Builder: loukoum.
 				Insert("table").
 				Columns("email", "login").
-				Values("tech@ulule.com", sql.NullInt64{Int64: 30, Valid: true}),
-			String:     "INSERT INTO table (email, login) VALUES ('tech@ulule.com', 30)",
+				Values("tech@DzananGanic.com", sql.NullInt64{Int64: 30, Valid: true}),
+			String:     "INSERT INTO table (email, login) VALUES ('tech@DzananGanic.com', 30)",
 			Query:      "INSERT INTO table (email, login) VALUES ($1, $2)",
 			NamedQuery: "INSERT INTO table (email, login) VALUES (:arg_1, :arg_2)",
-			Args:       []interface{}{"tech@ulule.com", sql.NullInt64{Int64: 30, Valid: true}},
+			Args:       []interface{}{"tech@DzananGanic.com", sql.NullInt64{Int64: 30, Valid: true}},
 		},
 		{
 			Name: "sql.NullInt64 null",
 			Builder: loukoum.
 				Insert("table").
 				Columns("email", "login").
-				Values("tech@ulule.com", sql.NullInt64{}),
-			String:     "INSERT INTO table (email, login) VALUES ('tech@ulule.com', NULL)",
+				Values("tech@DzananGanic.com", sql.NullInt64{}),
+			String:     "INSERT INTO table (email, login) VALUES ('tech@DzananGanic.com', NULL)",
 			Query:      "INSERT INTO table (email, login) VALUES ($1, $2)",
 			NamedQuery: "INSERT INTO table (email, login) VALUES (:arg_1, :arg_2)",
-			Args:       []interface{}{"tech@ulule.com", sql.NullInt64{}},
+			Args:       []interface{}{"tech@DzananGanic.com", sql.NullInt64{}},
 		},
 	})
 }
@@ -504,22 +504,22 @@ func TestInsert_Set(t *testing.T) {
 			Name: "Variadic",
 			Builders: []builder.Builder{
 				loukoum.Insert("table").Set(
-					loukoum.Pair("email", "tech@ulule.com"),
+					loukoum.Pair("email", "tech@DzananGanic.com"),
 					loukoum.Pair("enabled", true),
 					loukoum.Pair("created_at", loukoum.Raw("NOW()")),
 				),
 				loukoum.Insert("table").Set(
-					loukoum.Map{"email": "tech@ulule.com", "enabled": true},
+					loukoum.Map{"email": "tech@DzananGanic.com", "enabled": true},
 					loukoum.Map{"created_at": loukoum.Raw("NOW()")},
 				),
 				loukoum.Insert("table").Set(
-					map[string]interface{}{"email": "tech@ulule.com"},
+					map[string]interface{}{"email": "tech@DzananGanic.com"},
 					map[string]interface{}{"enabled": true, "created_at": loukoum.Raw("NOW()")},
 				),
 			},
 			String: fmt.Sprint(
 				"INSERT INTO table (created_at, email, enabled) ",
-				"VALUES (NOW(), 'tech@ulule.com', true)",
+				"VALUES (NOW(), 'tech@DzananGanic.com', true)",
 			),
 			Query: fmt.Sprint(
 				"INSERT INTO table (created_at, email, enabled) ",
@@ -529,7 +529,7 @@ func TestInsert_Set(t *testing.T) {
 				"INSERT INTO table (created_at, email, enabled) ",
 				"VALUES (NOW(), :arg_1, :arg_2)",
 			),
-			Args: []interface{}{"tech@ulule.com", true},
+			Args: []interface{}{"tech@DzananGanic.com", true},
 		},
 	})
 }

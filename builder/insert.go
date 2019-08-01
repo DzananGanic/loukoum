@@ -3,8 +3,8 @@ package builder
 import (
 	"fmt"
 
-	"github.com/ulule/loukoum/stmt"
-	"github.com/ulule/loukoum/types"
+	"github.com/DzananGanic/loukoum/stmt"
+	"github.com/DzananGanic/loukoum/types"
 )
 
 // Insert is a builder used for "INSERT" query.

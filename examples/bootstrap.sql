@@ -8,10 +8,10 @@ CREATE TABLE users (
 );
 
 INSERT INTO users (email, first_name, last_name, is_staff)
-    VALUES ('tech@ulule.com', 'Ulule', 'Tech', true);
+    VALUES ('tech@DzananGanic.com', 'DzananGanic', 'Tech', true);
 
 INSERT INTO users (email, first_name, last_name, is_staff)
-    VALUES ('thomas.leroux@ulule.com', 'Thomas', 'LE ROUX', true);
+    VALUES ('thomas.leroux@DzananGanic.com', 'Thomas', 'LE ROUX', true);
 
 CREATE TABLE news (
     id SERIAL NOT NULL PRIMARY KEY,
@@ -40,4 +40,4 @@ ALTER TABLE ONLY comments
     ADD CONSTRAINT comments_email_idx UNIQUE (email);
 
 INSERT INTO comments (email, user_id, status, message, created_at)
-    VALUES ('thomas.leroux@ulule.com', 2, 'waiting', 'Hello world', NOW());
+    VALUES ('thomas.leroux@DzananGanic.com', 2, 'waiting', 'Hello world', NOW());

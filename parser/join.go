@@ -6,10 +6,10 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/ulule/loukoum/lexer"
-	"github.com/ulule/loukoum/stmt"
-	"github.com/ulule/loukoum/token"
-	"github.com/ulule/loukoum/types"
+	"github.com/DzananGanic/loukoum/lexer"
+	"github.com/DzananGanic/loukoum/stmt"
+	"github.com/DzananGanic/loukoum/token"
+	"github.com/DzananGanic/loukoum/types"
 )
 
 // ErrJoinInvalidCondition is returned when join condition cannot be parsed.

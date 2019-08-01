@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/ulule/loukoum"
-	"github.com/ulule/loukoum/builder"
-	"github.com/ulule/loukoum/stmt"
+	"github.com/DzananGanic/loukoum"
+	"github.com/DzananGanic/loukoum/builder"
+	"github.com/DzananGanic/loukoum/stmt"
 )
 
 func TestSelect_Columns(t *testing.T) {

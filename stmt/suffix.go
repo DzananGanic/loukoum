@@ -1,7 +1,7 @@
 package stmt
 
 import (
-	"github.com/ulule/loukoum/types"
+	"github.com/DzananGanic/loukoum/types"
 )
 
 // Suffix is a suffix expression.

@@ -1,6 +1,6 @@
 FROM golang:1.11.0-stretch
 
-MAINTAINER thomas.leroux@ulule.com
+MAINTAINER thomas.leroux@DzananGanic.com
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV LANG C.UTF-8
@@ -24,8 +24,8 @@ RUN apt-get -y update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-COPY . /go/src/github.com/ulule/loukoum
-WORKDIR /go/src/github.com/ulule/loukoum
+COPY . /go/src/github.com/DzananGanic/loukoum
+WORKDIR /go/src/github.com/DzananGanic/loukoum
 RUN dep ensure
 
 CMD /bin/bash

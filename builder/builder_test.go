@@ -7,8 +7,8 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/ulule/loukoum/builder"
-	"github.com/ulule/loukoum/stmt"
+	"github.com/DzananGanic/loukoum/builder"
+	"github.com/DzananGanic/loukoum/stmt"
 )
 
 type BuilderTest struct {

@@ -1,7 +1,7 @@
 package stmt
 
 import (
-	"github.com/ulule/loukoum/types"
+	"github.com/DzananGanic/loukoum/types"
 )
 
 // Operator are used to compose expressions.

@@ -4,8 +4,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ulule/loukoum"
-	"github.com/ulule/loukoum/builder"
+	"github.com/DzananGanic/loukoum"
+	"github.com/DzananGanic/loukoum/builder"
 )
 
 func TestDelete(t *testing.T) {

@@ -3,8 +3,8 @@ package stmt
 import (
 	"strconv"
 
-	"github.com/ulule/loukoum/token"
-	"github.com/ulule/loukoum/types"
+	"github.com/DzananGanic/loukoum/token"
+	"github.com/DzananGanic/loukoum/types"
 )
 
 // Offset is a OFFSET clause.

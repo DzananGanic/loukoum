@@ -1,8 +1,8 @@
 package builder
 
 import (
-	"github.com/ulule/loukoum/stmt"
-	"github.com/ulule/loukoum/types"
+	"github.com/DzananGanic/loukoum/stmt"
+	"github.com/DzananGanic/loukoum/types"
 )
 
 // Delete is a builder used for "SELECT" query.
